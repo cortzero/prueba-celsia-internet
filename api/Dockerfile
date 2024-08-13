@@ -1,4 +1,6 @@
 # Dockerfile for the API
-
-
-ENTRYPOINT []
+FROM openjdk:17-alpine
+COPY ./target/*.jar /api/
+WORKDIR /api
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "api-0.0.1-SNAPSHOT.jar"]
