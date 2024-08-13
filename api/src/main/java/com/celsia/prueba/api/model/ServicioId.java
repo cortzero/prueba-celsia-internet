@@ -1,10 +1,7 @@
 package com.celsia.prueba.api.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -13,11 +10,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
+@Builder
 public class ServicioId implements Serializable {
 
-    @ManyToOne
-    @JoinColumn(name = "identificacion", referencedColumnName = "identificacion")
-    private Cliente cliente;
+    @Column(name = "identificacion")
+    private String identificacion;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "servicio", nullable = false)

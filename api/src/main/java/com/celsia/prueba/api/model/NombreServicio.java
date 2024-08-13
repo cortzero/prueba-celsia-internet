@@ -1,5 +1,7 @@
 package com.celsia.prueba.api.model;
 
+import java.util.Optional;
+
 public enum NombreServicio {
 
     INTERNET_200_MB("Internet 200 MB"),
@@ -15,8 +17,18 @@ public enum NombreServicio {
         this.nombre = nombre;
     }
 
+    public static Optional<NombreServicio> findByNombre(String nombre) {
+        for (NombreServicio nombreServicio : values()) {
+            if (nombreServicio.nombre.equalsIgnoreCase(nombre)) {
+                return Optional.of(nombreServicio);
+            }
+        }
+        return Optional.empty();
+    }
+
     @Override
     public String toString() {
         return nombre;
     }
+
 }

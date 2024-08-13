@@ -2,6 +2,7 @@ package com.celsia.prueba.api.exceptionhandlers;
 
 import com.celsia.prueba.api.exceptions.ClienteNotFoundException;
 import com.celsia.prueba.api.exceptions.RegistryAlreadyExistsException;
+import com.celsia.prueba.api.exceptions.ServicioNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -21,8 +22,18 @@ public class CustomExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
+    @ExceptionHandler(ServicioNotFoundException.class)
+    public ResponseEntity<String> handleServicioNotFound(ServicioNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
+
     @ExceptionHandler(RegistryAlreadyExistsException.class)
     public ResponseEntity<String> handleRegistryAlreadyExists(RegistryAlreadyExistsException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 

@@ -5,9 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -50,4 +52,18 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private Set<Servicio> servicios;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(identificacion, cliente.identificacion)
+                && Objects.equals(nombres, cliente.nombres)
+                && Objects.equals(apellidos, cliente.apellidos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificacion, nombres, apellidos);
+    }
 }
