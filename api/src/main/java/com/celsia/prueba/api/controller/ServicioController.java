@@ -3,6 +3,7 @@ package com.celsia.prueba.api.controller;
 import com.celsia.prueba.api.model.Servicio;
 import com.celsia.prueba.api.model.ServicioId;
 import com.celsia.prueba.api.service.ServicioService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class ServicioController {
     @PostMapping("/{clienteId}/{nombreServicio}")
     public ResponseEntity<String> createServicio(@PathVariable String clienteId,
                                                  @PathVariable String nombreServicio,
-                                                 @RequestBody Servicio servicio, UriComponentsBuilder ucb) {
+                                                 @Valid @RequestBody Servicio servicio, UriComponentsBuilder ucb) {
         Servicio createdServicio = servicioService.createServicio(clienteId, nombreServicio, servicio);
         URI newServicioLocation = ucb
                 .path("/servicios/{clienteId}/{nombreServicio}")
@@ -35,7 +36,7 @@ public class ServicioController {
     @PutMapping("/{clienteId}/{nombreServicio}")
     public ResponseEntity<String> updateServicio(@PathVariable String clienteId,
                                                  @PathVariable String nombreServicio,
-                                                 @RequestBody Servicio servicio) {
+                                                 @Valid @RequestBody Servicio servicio) {
         servicioService.updateServicio(clienteId, nombreServicio, servicio);
         return ResponseEntity.ok("Se actualizó la información del servicio contratado por el cliente.");
     }

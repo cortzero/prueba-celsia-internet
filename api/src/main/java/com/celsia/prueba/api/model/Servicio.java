@@ -19,7 +19,6 @@ import java.util.Objects;
 public class Servicio {
 
     @EmbeddedId
-    @NotNull(message = "El id del servicio es obligatorio")
     private ServicioId servicioId;
 
     @Column(name = "fechaInicio", nullable = false)
