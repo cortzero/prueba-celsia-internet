@@ -108,15 +108,15 @@ Para el desarrollo de la prueba teórica, tendrás que escribir tus respuestas e
 
 2.2. ¿Qué mecanismos de seguridad incluirías en la aplicación para garantizar la protección del acceso a los datos?
 
-- RTA:
+- RTA: Usaría Spring Security para implementar un mecanismo de autenticación y autorización y deifnir los roles de usuario y así evitar que usuarios no autorizados accedan a los datos.
 
   2.3. ¿Qué estrategia de escalabilidad recomendarías para la aplicación considerando que el crecimiento proyectado será de 1,000,000 de clientes por año?
 
-- RTA:
+- RTA: Podría separarlos en microservicios e implementar un loadbalancer para distirbuir las cargas de las peticiones a diferentes instancias de los servicios.
 
   2.4. ¿Qué patrón o patrones de diseño recomendarías para esta solución y cómo se implementarían? (Justifique)
 
-- RTA:
+- RTA: Recomendaría el patrón Observer ya que nos puede ofrecer una capa de seguridad como un firewall. Además permitiría imprimir logs en la consola para identificar las peticiones entrantes y salientes.
 
   2.5. ¿Qué recomendaciones harías para optimizar el manejo y la persistencia de datos de la aplicación, teniendo en cuenta que esta aplicación tiene una alta transaccionalidad?
 
