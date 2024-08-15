@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App.jsx'
 import ListServicios from './components/ListServicios.jsx'
 import MenuHeader from './components/MenuHeader.jsx'
+import ClienteForm from './components/ClienteForm.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -11,7 +12,9 @@ createRoot(document.getElementById('root')).render(
       <MenuHeader></MenuHeader>
       <Routes>
         <Route path='/' element={<App />}></Route>
-        <Route path='/servicios/:id' element={<ListServicios></ListServicios>}></Route>
+        <Route path='/servicios/:id' element={<ListServicios />}></Route>
+        <Route path='/crear-cliente' element={<ClienteForm />}></Route>
+        <Route path='/registrar-servicio'></Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

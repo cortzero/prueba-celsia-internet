@@ -1,0 +1,14 @@
+form {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+label {
+  display: block;
+}
+
+.form-row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
