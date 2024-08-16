@@ -1,7 +1,7 @@
 package com.celsia.prueba.api.controller;
 
+import com.celsia.prueba.api.model.NombreServicio;
 import com.celsia.prueba.api.model.Servicio;
-import com.celsia.prueba.api.model.ServicioId;
 import com.celsia.prueba.api.service.ServicioService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -59,8 +59,13 @@ public class ServicioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Servicio>> getServicios() {
-        return ResponseEntity.ok(servicioService.getServicios());
+    public ResponseEntity<List<Servicio>> getServiciosContratados() {
+        return ResponseEntity.ok(servicioService.getServiciosContratados());
+    }
+
+    @GetMapping("nombres-servicios")
+    public ResponseEntity<List<String>> getNombreServicios() {
+        return ResponseEntity.ok(servicioService.getNombreServicios());
     }
 
 }

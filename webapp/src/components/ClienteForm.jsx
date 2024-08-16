@@ -28,7 +28,6 @@ function ClienteForm() {
   }
 
   const handleNumeroIdentificacion = (event) => cliente.identificacion = event.target.value;
-  const handleTipoIdentificacion = (event) => cliente.tipoIdentificacion = event.target.value;
   const handleNombres = (event) => cliente.nombres = event.target.value;
   const handleApellidos = (event) => cliente.apellidos = event.target.value;
   const handleFechaNacimiento = (event) => cliente.fechaNacimiento = event.target.value;
@@ -40,7 +39,9 @@ function ClienteForm() {
     let selectElement = document.getElementById("tiposIdentificacion");
     let selectedValue = selectElement.value;
     cliente.tipoIdentificacion = selectedValue;
-    createCliente(cliente);
+    createCliente(cliente)
+      .then(response => console.log(response.data))
+      .catch(error => console.log(error.response.data));
   }
 
   return (
@@ -55,7 +56,7 @@ function ClienteForm() {
         </div>
         <div className='form-row'>
           <label>Tipo de identificación: </label>
-          <select onClick={handleTipoIdentificacion} name='tiposIdentificacion' id='tiposIdentificacion'>
+          <select name='tiposIdentificacion' id='tiposIdentificacion'>
             {tiposIdentificacionElements}
           </select>
         </div>

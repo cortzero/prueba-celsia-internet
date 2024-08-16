@@ -1,7 +1,7 @@
 package com.celsia.prueba.api.service;
 
+import com.celsia.prueba.api.model.NombreServicio;
 import com.celsia.prueba.api.model.Servicio;
-import com.celsia.prueba.api.model.ServicioId;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ public interface ServicioService {
     void deleteServicio(String clienteId, String nombreServicio);
     Servicio getServicio(String clienteId, String nombreServicio);
     List<Servicio> getServiciosByCliente(String clienteId);
-    List<Servicio> getServicios();
+    List<Servicio> getServiciosContratados();
+    List<String> getNombreServicios();
 
 }

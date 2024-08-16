@@ -7,13 +7,11 @@ function ListServicios() {
   const [servicios, setServicios] = useState([]);
   const {id} = useParams();
 
-  useEffect(() => retrieveServices(), []);
-
-  function retrieveServices() {
+  useEffect(() => {
     getServiciosByCliente(id)
       .then(response => setServicios(response.data))
-      .catch(error => console.log('No se pudo obtener los servicios que ha contratado el cliente'));
-  }
+      .catch(error => console.log(error.response.data));
+  }, []);
 
   const servicioElements = servicios.map(
     servicio => <ServiciosCard key={servicio.servicioId.nombreServicio} currentServicio={servicio} />

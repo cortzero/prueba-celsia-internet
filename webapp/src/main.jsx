@@ -5,6 +5,7 @@ import App from './App.jsx'
 import ListServicios from './components/ListServicios.jsx'
 import MenuHeader from './components/MenuHeader.jsx'
 import ClienteForm from './components/ClienteForm.jsx'
+import ServicioRegistryForm from './components/ServicioRegistryForm.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,8 +15,8 @@ createRoot(document.getElementById('root')).render(
         <Route path='/' element={<App />}></Route>
         <Route path='/servicios/:id' element={<ListServicios />}></Route>
         <Route path='/crear-cliente' element={<ClienteForm />}></Route>
-        <Route path='/registrar-servicio'></Route>
+        <Route path='/registrar-servicio' element={<ServicioRegistryForm />}></Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )

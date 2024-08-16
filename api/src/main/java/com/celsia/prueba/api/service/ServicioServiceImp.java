@@ -12,7 +12,10 @@ import com.celsia.prueba.api.repository.ServicioRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
@@ -70,8 +73,15 @@ public class ServicioServiceImp implements ServicioService {
     }
 
     @Override
-    public List<Servicio> getServicios() {
+    public List<Servicio> getServiciosContratados() {
         return servicioRepository.findAll();
+    }
+
+    @Override
+    public List<String> getNombreServicios() {
+        return Stream.of(NombreServicio.values())
+                .map(NombreServicio::toString)
+                .toList();
     }
 
     private Cliente getExistingCliente(String clienteId) {
