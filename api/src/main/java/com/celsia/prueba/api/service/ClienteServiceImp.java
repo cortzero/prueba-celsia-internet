@@ -3,10 +3,12 @@ package com.celsia.prueba.api.service;
 import com.celsia.prueba.api.exceptions.ClienteNotFoundException;
 import com.celsia.prueba.api.exceptions.RegistryAlreadyExistsException;
 import com.celsia.prueba.api.model.Cliente;
+import com.celsia.prueba.api.model.Servicio;
 import com.celsia.prueba.api.repository.ClienteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -14,6 +16,7 @@ import java.util.List;
 public class ClienteServiceImp implements ClienteService {
 
     private final ClienteRepository clienteRepository;
+    private final ServicioService servicioService;
 
     @Override
     public Cliente createCliente(Cliente cliente) {
@@ -44,8 +47,11 @@ public class ClienteServiceImp implements ClienteService {
 
     @Override
     public Cliente getCliente(String identificacion) {
-        return clienteRepository.findById(identificacion)
+        Cliente cliente = clienteRepository.findById(identificacion)
                 .orElseThrow(() -> new ClienteNotFoundException(identificacion));
+        List<Servicio> servicios = servicioService.getServiciosByCliente(identificacion);
+        cliente.setServicios(new HashSet<>(servicios));
+        return cliente;
     }
 
     @Override

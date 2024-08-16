@@ -1,24 +1,31 @@
-import { useState } from 'react'
-import { getAllClientes } from './services/ClienteService'
-import { useEffect } from 'react';
-import ClientesCard from './components/ClientesCard';
+import { useNavigate } from "react-router-dom"
 
 function App() {
-  const [clientes, setClientes] = useState([]);
-
-  useEffect(() => {
-    getAllClientes()
-      .then(response => setClientes(response.data))
-      .catch(error => console.log('No se pudo obtener los clientes'));
-  }, []);
+  const navigator = useNavigate();
+  let clienteId = "";
   
-  const clienteElements = clientes.map(
-    cliente => <ClientesCard key={cliente.identificacion} currentCliente={cliente} />
-  );
+  const handleNumeroIdentificacion = (event) => clienteId = event.target.value;
+  const goToClienteInformation = () => navigator('/cliente/' + clienteId);
 
   return (
     <div>
-      {clienteElements}
+      <div>
+        <h1>Consultar cliente</h1>
+      </div>
+      <form>
+        <div className='form-row'>
+          <label>Número de identificación: </label>
+          <input 
+            onChange={handleNumeroIdentificacion} 
+            type='text' 
+            id='identificacion' 
+            name='identificacion'
+            placeholder='Ingresa el número de identificación'></input>
+        </div>
+        <div className='form-row'>
+          <button onClick={goToClienteInformation}>Buscar</button>
+        </div>
+      </form>
     </div>
   )
 }

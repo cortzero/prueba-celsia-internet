@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { createServicio, getNombresServicios } from '../services/ServicioService';
+import { useNavigate } from 'react-router-dom';
 
 function ServicioRegistryForm() {
   const [nombresServicios, setNombresServicios] = useState([]);
+  const navigator = useNavigate();
+
   let clienteId = "";
   const servicio = {
     fechaInicio: "",
@@ -28,10 +31,12 @@ function ServicioRegistryForm() {
     let selectElement = document.getElementById("servicios");
     let selectedValue = selectElement.value;
     selectedValue = selectedValue.replaceAll(" ", "-");
-    console.log(selectedValue);
     servicio.ultimaFacturacion = servicio.fechaInicio;
     createServicio(clienteId, selectedValue, servicio)
-      .then(response => console.log(response.data))
+      .then(response => {
+        console.log(response.data);
+        navigator('/cliente/' + clienteId);
+      })
       .catch(error => console.log(error.response.data));
   }
 

@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { getAllTiposIdentificacion } from '../services/TiposIdentificacionService';
 import '../styles/FormStyle.css';
 import { createCliente } from '../services/ClienteService';
+import { useNavigate } from 'react-router-dom';
 
 function ClienteForm() {
   const [tiposIdentificacion, setTiposIdentificacion] = useState([]);
+  const navigator = useNavigate();
+
   const cliente = {
     identificacion: "",
     nombres: "",
@@ -40,7 +43,10 @@ function ClienteForm() {
     let selectedValue = selectElement.value;
     cliente.tipoIdentificacion = selectedValue;
     createCliente(cliente)
-      .then(response => console.log(response.data))
+      .then(response => {
+        console.log(response.data);
+        navigator('/clientes');
+      })
       .catch(error => console.log(error.response.data));
   }
 

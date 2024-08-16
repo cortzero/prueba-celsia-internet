@@ -1,18 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getServiciosByCliente } from "../services/ServicioService";
+import React from "react";
 import ServiciosCard from "./ServiciosCard";
 
-function ListServicios() {
-  const [servicios, setServicios] = useState([]);
-  const {id} = useParams();
-
-  useEffect(() => {
-    getServiciosByCliente(id)
-      .then(response => setServicios(response.data))
-      .catch(error => console.log(error.response.data));
-  }, []);
-
+function ListServicios({ servicios }) {
   const servicioElements = servicios.map(
     servicio => <ServiciosCard key={servicio.servicioId.nombreServicio} currentServicio={servicio} />
   )
@@ -20,7 +9,7 @@ function ListServicios() {
   return (
     <div>
       <div>
-        <h1>Cliente {id}</h1>
+        <h2>Servicios contratados</h2>
       </div>
       {servicioElements}
     </div>

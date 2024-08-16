@@ -26,7 +26,7 @@ public class Servicio {
     private LocalDate fechaInicio;
 
     @Column(name = "ultimaFacturacion", nullable = false)
-    //@NotNull(message = "La fecha de la última facturación es obligatoria")
+    @NotNull(message = "La fecha de la última facturación es obligatoria")
     private LocalDate ultimaFacturacion;
 
     @Column(name = "ultimoPago", nullable = false)

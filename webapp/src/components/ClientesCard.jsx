@@ -1,12 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
 import '../styles/CardStyle.css';
+import ListServicios from './ListServicios';
 
 function ClientesCard({ currentCliente }) {
   const cliente = {...currentCliente};
-  const navigator = useNavigate();
-
-  const goToListServicios = (clienteId) => navigator(`/servicios/${clienteId}`);
 
   return (
     <div className='card'>
@@ -34,8 +31,8 @@ function ClientesCard({ currentCliente }) {
         <p className='card-label'>Correo electrónico: </p>
         <p className='card-value'>{cliente.correoElectronico}</p>
       </div>
-      <div className='card-component button-section'>
-        <button onClick={() => goToListServicios(cliente.identificacion)}>Servicios</button>
+      <div className='card-component'>
+        <ListServicios servicios={cliente.servicios || []} />
       </div>
     </div>
   )
