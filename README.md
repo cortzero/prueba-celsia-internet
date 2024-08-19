@@ -120,7 +120,7 @@ Para el desarrollo de la prueba teórica, tendrás que escribir tus respuestas e
 
   2.5. ¿Qué recomendaciones harías para optimizar el manejo y la persistencia de datos de la aplicación, teniendo en cuenta que esta aplicación tiene una alta transaccionalidad?
 
-- RTA:
+- RTA: 
 
 # 3. Redes
 
