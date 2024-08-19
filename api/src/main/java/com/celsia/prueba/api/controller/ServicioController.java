@@ -1,6 +1,5 @@
 package com.celsia.prueba.api.controller;
 
-import com.celsia.prueba.api.model.NombreServicio;
 import com.celsia.prueba.api.model.Servicio;
 import com.celsia.prueba.api.service.ServicioService;
 import jakarta.validation.Valid;
