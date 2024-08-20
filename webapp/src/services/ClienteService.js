@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CLIENTES_API_URL = import.meta.env.VITE_REST_API_BASE_URL + "/clientes";
+const CLIENTES_API_URL = import.meta.env.VITE_REST_API_BASE_URL + "/api/clientes";
 
 export const getAllClientes = () => axios.get(CLIENTES_API_URL);
 export const getCliente = (clienteId) => axios.get(CLIENTES_API_URL + "/" + clienteId);

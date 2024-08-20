@@ -21,6 +21,7 @@ services:
       DB_PORT: '3306'
       DB_USERNAME: 'user'
       DB_PASSWORD: '1234'
+      FRONTEND_ORIGIN: http://webapp:5173
     depends_on:
       db:
         condition: service_healthy

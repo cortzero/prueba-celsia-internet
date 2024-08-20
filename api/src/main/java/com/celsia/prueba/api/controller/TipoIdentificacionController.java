@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-@CrossOrigin("*")
 @RestController
-@RequestMapping("/tipos-identificacion")
+@RequestMapping("/api/tipos-identificacion")
 @AllArgsConstructor
 public class TipoIdentificacionController {
 
